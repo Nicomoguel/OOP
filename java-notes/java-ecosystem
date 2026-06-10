@@ -1,0 +1,52 @@
+Java is pivotal in software development
+Created by Sun Microsystems in 1995
+Owned by oracle
+
+Java Development Kit (JDK)
+- Java compiler
+- Java runtime environment:
+	-Provides the components for executing applications
+	-Bytecode
+	-Core libraries(I/O, Networking, Concurrency)
+- Utilities
+
+Frameworks
+-Spring: 
+	-Dependency Injection(DI): loosely coupled code
+	-Aspect oriented programming: separated cross-cutting concerns from business logic
+	-Spring boot: simplifies application setup
+	-Spring Model-View-Controller(MVC): streamlines web app dev
+-Hibernate:
+	-Simplifies data handling by automating mapping objects to database tables
+	-Object relational mapping framework
+
+Build tools:
+	-Maven
+	-Gradle
+
+Application severs: provide enviroments for deploying and managing applications
+	-Apache tomcat
+	-JBoos
+
+Testing frameworks:
+	-Junit
+	-TestNG
+
+Cloud native and microsystems:
+	-Spring Cloud: service discovery and configuration management
+
+Desktop applications
+	-JavaFX
+	-Swing
+
+Mobile applications:
+	-Android software development kit(SDK)
+	-Android studio
+	-Kotlin
+
+Embedded systems:
+	-Java micro edition
+
+ 
+	
+

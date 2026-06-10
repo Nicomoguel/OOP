@@ -1,0 +1,10 @@
+Commercial Java provides professional support and services beyond the standard Java SE
+Open source Java is free and modifiable, OpenJDK
+
+Differences:
+	Since Java 11, they are both built from OpenJDK codebase
+	Licensing: some commercial distros may require a paid subscription for production use
+	Support: Commercial Java includes professional support
+	Support duration: Commercial JAva - long term support
+	Legal protection: Commercial java includes legal idemnification
+

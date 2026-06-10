@@ -1,0 +1,25 @@
+ Components of java
+Java virtual machine(JVM):
+	-Translator between humans and machines
+	-Converts bytecode into machine code
+
+Java Development Kit(JDK):
+	-Tools to build and compile
+	-Compilers, debuggers and other utilities
+	-Java APIs
+	-Compiles into .java
+	-Executes bytecode
+
+Java runtime environment(JRE):
+	-Includes JVM and core libraries
+	-Environment to run java programs
+	-Runs java programs without JDK
+
+Relationship between components:
+	-JVM: Executes java bytecode, part of JDK and JRE
+	-JRE: Provides libraries and components to run Java applications, includes the JVM
+	-JDK: Kit for developing Java applications
+
+JDK: Coding, compiling, debugging
+JRE: Runs without developing
+JVM: Runs java programs converting java code into machine code

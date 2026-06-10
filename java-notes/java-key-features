@@ -1,0 +1,40 @@
+Java is a object oriented language:
+	class: defines object properties and actions
+	inheritance: shares features between classes
+	polimorphism: action adapts to objects
+	encapsulation: hides sensitive details, prevents unauthorized changes
+
+Platform independence:
+	Converts java code into bytecode
+	enables multiplatform utilization
+
+Strongly typed language: 
+	every variable requires declaration to catch errors during compilation
+	ensures better code quality
+	helps reduce bugs
+
+Automatic memory management
+
+Multithreading
+	Allows threads to run simultaneously
+	Makes apps smoother and faster
+
+Comprehensive standard library: Includes tools for:
+	Networking
+	Data structures
+	File handling
+	handle HTTP request
+
+Security
+
+Versatility:
+	robust webapps
+	android apps
+	complex systems
+
+Latest trends in Java:
+	Cloud development
+	Serverless architecture (AWS)
+	AI and machine learning
+	Spring framework
+	IDEs (IntelliJ IDEA, Eclipse, VSCode)
