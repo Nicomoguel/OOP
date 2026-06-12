@@ -1,9 +1,8 @@
 import java.io.IOException;
 import java.util.Scanner;
 public class Menu{
-	private int opcion;
-	int i = 0;
-	CuentaBancaria[] misCuentas = new CuentaBancaria[10];
+    private int i = 0;
+	private CuentaBancaria[] misCuentas = new CuentaBancaria[10];
 	Scanner sc = new Scanner(System.in);
 
 
@@ -44,7 +43,7 @@ public class Menu{
 		System.out.print("Elige una opcion: ");
 	}
 	public void crearCuenta(){
-		int cont = 1;
+		int cont = 0;
 		do{
 			if(i > 9){
 				System.out.println("Has llegado al limite de cuentas");
@@ -66,20 +65,21 @@ public class Menu{
 		do{
 			System.out.print("Ingrese su numero de cuenta: ");
 			int nCuenta = sc.nextInt();
-
+            boolean enc = false;
 			for(int j = 0; j < misCuentas.length; j++){
 				if(nCuenta == misCuentas[j].getNumero()){
 					System.out.println("Nombre del titular: " + misCuentas[j].getNombre());
 					System.out.println("Numero de cuenta: " + misCuentas[j].getNumero());
 					System.out.println("Saldo disponible: " + misCuentas[j].consultaSaldo());
                     accionCuenta(misCuentas[j]);
+                    enc = true;
 					break;
 				}
-                else{
-                    System.out.println("Cuenta no encontrada.");
-                    break;
-                }
 			}
+            if(!enc){
+                System.out.println("Cuenta no encontrada, intente de nuevo");
+                continue;
+            }
             cont = continuar(cont);
 		}while(cont != 0);
 	}
@@ -87,7 +87,6 @@ public class Menu{
         int monto;
         System.out.println("1. Realizar deposito");
         System.out.println("2. Realizar retiro");
-        System.out.println("3. Salir");
         System.out.print("Elige una opcion: ");
         int opc = sc.nextInt();
         if(opc == 1 || opc == 2){
@@ -95,10 +94,12 @@ public class Menu{
             monto = sc.nextInt();
             if(opc == 1){
                 cuenta.deposito(monto);
+                System.out.println("Deposito por %" + monto + " realizado exitosamente");
             }else if (opc == 2){
                 cuenta.retiro(monto);
+                System.out.println("Retiro por por %" + monto + " realizado exitosamente");
             }
-        }
+        }else return;
     }
 
 }

@@ -1,10 +1,29 @@
 class Queue{
-    private char[]q;
-    private int putloc, getloc;
-    Queue(int size){
+    char[]q;
+    int putloc, getloc;
+    public Queue(int size){
         q = new char[size];
         putloc = getloc = 0;
     }
+
+    public Queue(Queue ob){
+        putloc = ob.putloc;
+        getloc = ob.getloc;
+        for(int i = getloc; i < getlock; i++){
+            q[i] = ob.q[i];
+        }
+    }
+
+
+    public Queue(int[] arr){
+        q = new char[arr.length];
+        putloc = getloc = 0;
+        for(int i = 0; i < arr.length; i++){
+            put(arr[i]);
+        }
+    }
+    
+
     public void put(char ch){
         if(putloc == q.length){
             System.out.println("Queue is full");
