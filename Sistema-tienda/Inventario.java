@@ -5,7 +5,7 @@ public class Inventario{
 
 
     static{
-        System.out.println("Sistema de inventario inicializado.")
+        System.out.println("Sistema de inventario inicializado.");
     }
 
     public Inventario(int maxSize){
@@ -67,7 +67,7 @@ public class Inventario{
     */
     public void buscarProducto(String nombre){
         for(int i = 0; i < contador; i++){
-            if(productos[i].getNombre.equals(nombre)){
+            if(productos[i].getNombre().equals(nombre)){
                 System.out.println("Producto encontrado");
                 System.out.println("Producto: " + productos[i].getNombre());
                 System.out.println("Codigo: " + productos[i].getCodigo());
@@ -81,14 +81,14 @@ public class Inventario{
 
     public Producto[] buscarProducto(double min, double max){
         int size = 0;
-        for(int i = 0 i < productos.length; i++){
-            int precio = productos[i].getPrecio();
+        for(int i = 0; i < productos.length; i++){
+            double precio = productos[i].getPrecio();
             if(precio <= max && precio >= min) size++;
         }
         Producto[] productosEnRango = new Producto[size];
         int contador = 0;
-        for(int i = 0 i < productos.length; i++){
-            int precio = productos[i].getPrecio();
+        for(int i = 0; i < productos.length; i++){
+            double precio = productos[i].getPrecio();
             if(precio <= max && precio >= min){
                 productosEnRango[contador++] = productos[i];
             }
@@ -117,7 +117,8 @@ public class Inventario{
 
 
     public static Inventario merge(Inventario inv1, Inventario inv2){
-        Inventario nuevoInventario(inv1.getSize() + inv2.getSize());
+        int size = inv1.getSize() + inv2.getSize();
+        Inventario nuevoInventario = new Inventario(size);
         for(int i = 0; i < inv1.getSize(); i++){
             nuevoInventario.agregarProducto(inv1.buscarProductoIndex(i));
         }

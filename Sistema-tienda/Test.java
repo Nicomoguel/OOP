@@ -22,7 +22,9 @@ public class Test{
             System.out.println("No hay productos en el rango seleccionado");
         }else{
             System.out.println("Productos encontrados");
-            
         }
+
+
+        inventario1.registro();
     }
 }
