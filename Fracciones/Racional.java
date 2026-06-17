@@ -72,7 +72,7 @@ public class Racional{
     public float getFraccionFloat(){
         float num1 = (float) numerador;
         float num2 = (float) denominador;
-        return numerador / denominador;
+        return num1 / num2;
     }
 
 

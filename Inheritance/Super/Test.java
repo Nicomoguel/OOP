@@ -7,10 +7,18 @@ public class Test{
         figs[1] = new Triangle(5.0, "One parameter");
         // two parameter shape
         figs[2] = new Triangle(2.0, 3.0, "Two parameters");
+        ColorTriangle fig4 = new ColorTriangle("Blue", "Outlined", 8.0, 12.0);
         for(int i = 0; i < figs.length; i++){
             System.out.println("Triangle #" + (i+1));
             figs[i].showStyle();
             System.out.println("Area: " + figs[i].getArea());
         }
+
+        System.out.println("Multilevel hierachy: ");
+        System.out.println("Triangle #4");
+        fig4.showStyle();
+        System.out.println("Area: " + fig4.getArea());
+        fig4.showColor();    
+    
     }
 }

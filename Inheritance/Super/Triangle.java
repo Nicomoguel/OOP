@@ -18,4 +18,4 @@ public class Triangle extends TwoDShape{
     public void showStyle(){
         System.out.println("Style is: " + style);
     }
-}
+}   
