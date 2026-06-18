@@ -12,6 +12,11 @@ public class TwoDShape{
         heigth = y;
     }
 
+    public TwoDShape(TwoDShape ob){
+        width = ob.getWidth();
+        heigth = ob.getHeigth();
+    }
+
     public double getWidth(){return width;}
     public double getHeigth(){return heigth;}
     public void setWidth(double newWidth){width = newWidth;}

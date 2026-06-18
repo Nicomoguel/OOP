@@ -12,8 +12,17 @@ public class Triangle extends TwoDShape{
         super(x,y);
         style = newStyle;
     }
+
+    public Triangle(Triangle ob){
+        super(ob);
+        style = ob.getStyle();
+    }
+    
     public double getArea(){
         return getWidth() * getHeigth() / 2;
+    }
+    public String getStyle(){
+        return style;
     }
     public void showStyle(){
         System.out.println("Style is: " + style);

@@ -4,6 +4,10 @@ public class ColorTriangle extends Triangle{
         super(x,y,s);
         color = c;
     }
+    public ColorTriangle(ColorTriangle ob){
+        super(ob);
+        color = ob.getColor();
+    }
     public String getColor(){
         return color;
     }

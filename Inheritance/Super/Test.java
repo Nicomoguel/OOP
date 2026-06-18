@@ -14,11 +14,18 @@ public class Test{
             System.out.println("Area: " + figs[i].getArea());
         }
 
-        System.out.println("Multilevel hierachy: ");
+        System.out.println("\nMultilevel hierachy: ");
         System.out.println("Triangle #4");
         fig4.showStyle();
         System.out.println("Area: " + fig4.getArea());
-        fig4.showColor();    
-    
+        fig4.showColor();  
+
+        ColorTriangle fig5 = new ColorTriangle(fig4);
+        System.out.println("\nSuperclass references: ");
+        System.out.println("Triangle #5");
+        fig5.showStyle();
+        System.out.println("Area: " + fig4.getArea());
+        fig5.showColor();  
+        fig5.showDim();
     }
 }
