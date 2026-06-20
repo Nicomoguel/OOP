@@ -1,38 +1,44 @@
-public class Polinomio{
-    private int[] coeficientes;
-    private int grado; 
-    public Polinomio(int[] arr){
-        grado = arr.length;
-        coeficientes = arr;
+public class Polinomio extends Funcion{
+    public Polinomio(){
+        super();
     }
+    public Polinomio(double[] arr){
+        super(arr);
+    }
+
+    //sobre escribo el metodo de la super clase
+    @Override
     public double evaluar(double x){
         double resultado = 0;
-        for(int i = 0; i < grado; i++){
-            resultado += Math.pow(x, i) * coeficientes[i];
+        for(int i = 0; i <= getGrado(); i++){
+            resultado += Math.pow(x, i) * this.parametros[i];
         }
         return resultado;
     }
-    
-    public void mostrarPolinomio(double x){
-        for(int i = grado - 1; i >= 0; i--){
-            if(i == 0){
-                
-                System.out.print(coeficientes[i] + "(" + x + ")^" + i + ": " + evaluar(x));
-
-
-            }else{
-                System.out.print(coeficientes[i] + "(" + x + ")^" + i + " + ");
-            }
+    @Override    
+    public String mostrarFuncion(){
+        String polinomio = "";
+        if(getGrado()== 0) return polinomio + this.parametros[0];
+        for(int i = getGrado(); i > 0; i--){
+            String termino = this.parametros[i] + "x^" + i;
+            if(this.parametros[i] == 0) continue;
+            else if(i == 1 && this.parametros[i] == 1) termino = "x";
+            else if(this.parametros[i] == 1) termino = "x^" + i;
+            if(i < (getGrado())) polinomio += " + " + termino;
+            else polinomio += termino;
         }
-        System.out.println();
+        if(this.parametros[0] != 0){
+            polinomio += " + " + this.parametros[0];
+        }   
+        return polinomio;
     }
 
     public int getGrado(){
-        return grado;
+        return this.parametros.length -1;
     }
 
-    public int getCoeficiente(int i){
-        return coeficientes[i];
+    public double getCoeficiente(int i){
+        return this.parametros[i];
     }
 }
 
