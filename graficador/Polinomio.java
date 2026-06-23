@@ -1,9 +1,22 @@
-public class Polinomio extends Funcion{
+public class Polinomio extends Funcion implements Derivable{
     public Polinomio(){
         super();
     }
     public Polinomio(double[] arr){
         super(arr);
+    }
+    public Polinomio(int[] arr){
+        super(arr);
+    }
+    // implementar derivable
+    @Override
+    public Polinomio derivar(){
+        double[] nuevosParametros = new double[this.parametros.length - 1];
+        for(int i = 0; i < nuevosParametros.length; i++){
+            nuevosParametros[i] = this.parametros[i+1] * (i + 1);
+        }
+        Polinomio derivada = new Polinomio(nuevosParametros);
+        return derivada;
     }
 
     //sobre escribo el metodo de la super clase

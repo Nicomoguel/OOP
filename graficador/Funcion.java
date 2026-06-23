@@ -1,4 +1,4 @@
-public class Funcion{
+public abstract class Funcion{
     protected double[] parametros;
     public Funcion(){
         parametros = new double[1];
@@ -13,12 +13,12 @@ public class Funcion{
             System.out.println(parametros[i]);
         }
     }
-    public double evaluar(double x){
-        System.out.println("No implementado");
-        return 0.0;
+    public Funcion(int[] params){
+        parametros = new double[params.length];
+        for(int i = 0; i < parametros.length; i++){
+            parametros[i] = (double) params[i];
+        }
     }
-    public String mostrarFuncion(){
-        System.out.println("No implementado");
-            return null;
-    }
+    public abstract double evaluar(double x);
+    public abstract String mostrarFuncion();
 }

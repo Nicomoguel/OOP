@@ -15,29 +15,43 @@ public class MiPanel extends JPanel{
     private int squareY = 50;
     private int squareW = 20;
     private int squareH = 20;
-    private Polinomio p;
+    private Funcion p;
+    private Funcion[] funciones;
     private int xInicial, xFinal, yInicial, yFinal;
 
     public MiPanel(){
         setBorder(BorderFactory.createLineBorder(Color.black));
-        int[] coeficientes = {1,0,1};
-        this.p = new Polinomio(coeficientes);
+        //double[] coeficientes = {1.0,1.0,1.0,1.0};
+        //Trigonometrica a = new Seno(1.0, 1.0, 0.0, 0.0);
+        //Seno a_sen = (Seno) a;
+        //Coseno derivada_sen = (Coseno)a_sen.derivar();
+        //this.p = derivada_sen;
+        funciones = new Funcion[3];
+        funciones[0] = new Polinomio(new double[]{2.5,7.9,4.5});
+        funciones[1] = new Seno(1.0,1.0,0,0);
+        funciones[2] = new Coseno(1.0,1.0,0,0);
         this.xInicial = -5;
         this.xFinal = 5;
         this.yInicial = -5;
         this.yFinal = 5;
     }
 
-    private void graficarFuncion(Graphics g){
+    private void graficarFunciones(Graphics g){
+        for(int i = 0; i < funciones.length; i++){
+            graficarFuncion(this.funciones[i], g);
+        }
+    }
+
+    private void graficarFuncion(Funcion func, Graphics g){
         int pixelY, sigX, sigY;
         double x, y, siguienteX, siguienteY;
         for(int pixelX = 0; pixelX < this.getWidth(); pixelX++){
             x = escalarX(pixelX);
-            y = this.p.evaluar(x);
+            y = func.evaluar(x);
             pixelY = escalarY(y);
             sigX = pixelX + 1;
             siguienteX = escalarX(sigX);
-            siguienteY = this.p.evaluar(siguienteX);
+            siguienteY = func.evaluar(siguienteX);
             sigY = escalarY(siguienteY);
             g.drawLine(pixelX, pixelY, sigX, sigY);
 
@@ -92,8 +106,9 @@ public class MiPanel extends JPanel{
     }
     protected void paintComponent(Graphics g){
         g.setFont(new Font("SANS_SERIF", Font.PLAIN, 10));
-        g.drawString("f(x) = x^2 + 1", 40, 50);
+        //String funcion = p.mostrarFuncion();
+        // g.drawString("f(x) = " + funcion, 40, 50);
         this.dibujarPlano(g);
-        graficarFuncion(g);
+        graficarFunciones(g);
     }
 }
