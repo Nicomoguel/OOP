@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
@@ -62,14 +64,17 @@ public class MiPanel extends JPanel{
     private void dibujarPlano(Graphics g){
         g.drawLine(this.getWidth()/2, 0, this.getWidth()/2, this.getHeight());
         g.drawLine(0, this.getHeight()/2, this.getWidth(), this.getHeight()/2);
+        
         int numeroX = -5;
         int numeroY = 5;
         for(int pixel = 0; pixel < this.getWidth(); pixel++){
             if(pixel % (this.getWidth() / 10) == 0){
                 g.drawLine(pixel, (this.getHeight()/2)-10, pixel, (this.getHeight()/2)+10); 
+                pintarOpacas(pixel, 0, pixel, this.getHeight(), g);
             }
             if(pixel % (this.getHeight() / 10) == 0){ 
-                g.drawLine((this.getWidth()/2)+10, pixel+4, (this.getWidth()/2)-10, pixel+4); 
+                g.drawLine((this.getWidth()/2)+10, pixel+4, (this.getWidth()/2)-10, pixel+4);
+                pintarOpacas(0,pixel+4, this.getWidth(), pixel+4, g);
             }
             if(pixel  % (this.getWidth() / 10) == 0){
                 if(numeroX != 0){
@@ -78,10 +83,21 @@ public class MiPanel extends JPanel{
                 numeroX++;
             }
             if(pixel % (this.getHeight() / 10) == 0){
-                g.drawString(String.valueOf(numeroY), this.getHeight() / 2, pixel);
+                g.drawString(String.valueOf(numeroY), this.getWidth() / 2 + 12, pixel);
                 numeroY--;
             }
         }
+    }
+
+    private void pintarOpacas(int x1, int y1, int x2, int y2, Graphics g){
+        Graphics2D g2d = (Graphics2D) g;
+        // Configurar una opacidad del 50% (0.5f) para todo lo que se dibuje después
+        AlphaComposite ac = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f);
+        g2d.setComposite(ac);
+        // Ahora las formas o imágenes se dibujarán a la mitad de su transparencia
+        g2d.drawLine(x1,y1,x2,y2);
+        // Restaurar el composite predeterminado (opaco al 100%)
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
     }
 
         
@@ -99,16 +115,25 @@ public class MiPanel extends JPanel{
         xEscalada *= (this.xFinal - this.xInicial);
         return xEscalada;
     }
+    public void printFunciones(Graphics g){
+        for(int i = 0; i < funciones.length; i++){
+            String funcion = funciones[i].mostrarFuncion();
+            g.drawString("f(x) = " + funcion, 40, 50 + (15*i));
+
+        }
+    }
 
 
     public Dimension getPreferredSize(){
         return new Dimension(250, 250);
     }
     protected void paintComponent(Graphics g){
-        g.setFont(new Font("SANS_SERIF", Font.PLAIN, 10));
+        g.setFont(new Font("SANS_SERIF", Font.PLAIN, 15));
         //String funcion = p.mostrarFuncion();
         // g.drawString("f(x) = " + funcion, 40, 50);
-        this.dibujarPlano(g);
+
+        dibujarPlano(g);
+        printFunciones(g);
         graficarFunciones(g);
     }
 }
